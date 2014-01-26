@@ -10,5 +10,7 @@ public:
 private:
 	HWND hFrameWnd;
 	HWND hClientWnd;
+
+	int Create(WPARAM wParam, LPARAM lParam);
 };
 
