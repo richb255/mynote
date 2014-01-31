@@ -7,6 +7,7 @@ mApplication::mApplication(HINSTANCE hInstance, int nCmdShow)
 {
 	hInst    = hInstance;
 	nShowCmd = nCmdShow;
+
 }
 
 
@@ -24,10 +25,12 @@ int mApplication::run()
 
 	hAccelTable = LoadAccelerators(hInst, MAKEINTRESOURCE(IDC_MYNOTE));
 
+	CreateMainWindow(hInst, nShowCmd);
+
 	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
-		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		if (!/*TranslateMDISysAccel(hwndMDIClient, &msg) && */TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
