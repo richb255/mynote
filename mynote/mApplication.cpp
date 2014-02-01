@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "mApplication.h"
 #include "FrameWindow.h"
+#include "DocumentWindow.h"
 #include "Resource.h"
 
 mApplication::mApplication(HINSTANCE hInstance, int nCmdShow)
@@ -73,6 +74,12 @@ BOOL mApplication::RegisterWindowClasses(HINSTANCE hInstance)
 	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_MYNOTE);
 	wcex.lpszClassName	= FrameWindow::GetWindowClassName();
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+	if(!RegisterClassEx(&wcex))
+		return FALSE;
+
+	wcex.lpfnWndProc	= (WNDPROC)DocumentWindow::WndProc;
+	wcex.lpszClassName	= DocumentWindow::GetWindowClassName();
 
 	if(!RegisterClassEx(&wcex))
 		return FALSE;

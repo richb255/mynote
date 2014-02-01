@@ -7,7 +7,7 @@
 class FrameWindow
 {
 public:
-	FrameWindow(void);
+	FrameWindow(HWND hWnd);
 	virtual ~FrameWindow(void);
 	static LRESULT FrameWndProc(HWND hWndFrame, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static LPWSTR GetWindowClassName();
@@ -17,6 +17,6 @@ private:
 	HWND hClientWnd;
 
 	int Create(WPARAM wParam, LPARAM lParam);
-	void SetHandle(HWND hWnd);
+    void NewDocument(WPARAM wParam, LPARAM lParam);
 };
 

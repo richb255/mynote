@@ -8,11 +8,16 @@
 #define IDR_MAINFRAME			128
 #define IDD_MYNOTE_DIALOG	102
 #define IDD_ABOUTBOX			103
-#define IDM_ABOUT				104
-#define IDM_EXIT				105
+#define IDM_NEW                 1001
+#define IDM_OPEN                1002
+#define IDM_SAVE                1003
+#define IDM_SAVEAS              1004
+#define IDM_ABOUT				1005
+#define IDM_EXIT				1006
 #define IDI_MYNOTE			107
 #define IDI_SMALL				108
-#define IDC_MYNOTE			109
+#define IDC_MYNOTE			9100
+#define IDC_MYNOTE1         9101
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
