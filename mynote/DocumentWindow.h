@@ -9,5 +9,6 @@ public:
 
 private:
 	HWND hChildWnd;
+	HWND hRichEditWnd;
 };
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "StatusBarWnd.h"
+
 #define WINDOWMENU  3   /* position of window menu               */
 #define SHORTMENU   2   /* position of short version window menu */
 #define IDM_WINDOWCHILD 4100
@@ -16,7 +18,10 @@ private:
 	HWND hFrameWnd;
 	HWND hClientWnd;
 
+	StatusBarWnd* statusBar;
+
 	int Create(WPARAM wParam, LPARAM lParam);
     void NewDocument(WPARAM wParam, LPARAM lParam);
+	int Size(WPARAM wParam, LPARAM lParam);
 };
 

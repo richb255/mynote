@@ -9,11 +9,13 @@ FrameWindow::FrameWindow(HWND hWnd)
 {
 	hFrameWnd = hWnd;
     hClientWnd = NULL;
+
 }
 
 
 FrameWindow::~FrameWindow(void)
 {
+	delete statusBar;
 }
 
 LRESULT FrameWindow::FrameWndProc(HWND hWndFrame, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -96,7 +98,9 @@ int FrameWindow::Create(WPARAM wParam, LPARAM lParam)
       return -1;
    }
 
-    
+   statusBar = new StatusBarWnd(hFrameWnd);
+   statusBar->Create();
+
     return 0;
 }
 
@@ -106,4 +110,12 @@ void FrameWindow::NewDocument(WPARAM wParam, LPARAM lParam)
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, hClientWnd, NULL, (HINSTANCE)GetModuleHandle(NULL), NULL);
 
    ShowWindow(hClientWnd, SW_SHOW);
+}
+
+int FrameWindow::Size(WPARAM wParam, LPARAM lParam)
+{
+	WORD width = LOWORD(lParam);
+	WORD height = HIWORD(lParam);
+
+	return 0;
 }

@@ -1,3 +1,8 @@
+/*
+  The Documentwindow class is the MDI child window used in this application and will contain a RichEdit control to do the
+  actual editing work.
+*/
+
 #include "StdAfx.h"
 #include "DocumentWindow.h"
 
@@ -5,6 +10,7 @@
 DocumentWindow::DocumentWindow(HWND hWnd)
 {
 	hChildWnd = hWnd;
+	hRichEditWnd = NULL;
 }
 
 
@@ -42,3 +48,4 @@ LPWSTR DocumentWindow::GetWindowClassName()
 {
     return L"MyNoteDocumentWindowClass";
 }
+

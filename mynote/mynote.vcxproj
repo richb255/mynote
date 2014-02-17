@@ -53,6 +53,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);comctl32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,6 +70,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);comctl32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -79,24 +81,32 @@
   <ItemGroup>
     <ClInclude Include="AboutDialog.h" />
     <ClInclude Include="DocumentWindow.h" />
+    <ClInclude Include="FileDialogWnd.h" />
     <ClInclude Include="FrameWindow.h" />
     <ClInclude Include="mApplication.h" />
     <ClInclude Include="mynote.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RichEditWnd.h" />
+    <ClInclude Include="StatusBarWnd.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ToolbarWnd.h" />
     <ClInclude Include="UniString.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AboutDialog.cpp" />
     <ClCompile Include="DocumentWindow.cpp" />
+    <ClCompile Include="FileDialogWnd.cpp" />
     <ClCompile Include="FrameWindow.cpp" />
     <ClCompile Include="mApplication.cpp" />
     <ClCompile Include="mynote.cpp" />
+    <ClCompile Include="RichEditWnd.cpp" />
+    <ClCompile Include="StatusBarWnd.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ToolbarWnd.cpp" />
     <ClCompile Include="UniString.cpp" />
   </ItemGroup>
   <ItemGroup>
