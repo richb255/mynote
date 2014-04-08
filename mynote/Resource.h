@@ -12,8 +12,11 @@
 #define IDM_OPEN                1002
 #define IDM_SAVE                1003
 #define IDM_SAVEAS              1004
-#define IDM_ABOUT				1005
-#define IDM_EXIT				1006
+#define IDM_EDITCUT             1005
+#define IDM_EDITCOPY            1006
+#define IDM_EDITPASTE           1007
+#define IDM_ABOUT				1008
+#define IDM_EXIT				1009
 #define IDI_MYNOTE			107
 #define IDI_SMALL				108
 #define IDC_MYNOTE			9100

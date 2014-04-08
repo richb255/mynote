@@ -11,11 +11,15 @@ DocumentWindow::DocumentWindow(HWND hWnd)
 {
 	hChildWnd = hWnd;
 	hRichEditWnd = NULL;
+
+	hrichEdit = LoadLibrary(L"richedit20.dll");
 }
 
 
 DocumentWindow::~DocumentWindow(void)
 {
+
+	FreeLibrary(hrichEdit);
 }
 
 LRESULT DocumentWindow::WndProc(HWND hWndChild, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -38,6 +42,9 @@ LRESULT DocumentWindow::WndProc(HWND hWndChild, UINT uMsg, WPARAM wParam, LPARAM
 			delete doc;
 		return 0;
 
+	case WM_SIZE:
+        return doc->Size(wParam, lParam);
+
 	default:
 		return DefMDIChildProc(hWndChild, uMsg, wParam, lParam);
 	}
@@ -49,3 +56,17 @@ LPWSTR DocumentWindow::GetWindowClassName()
     return L"MyNoteDocumentWindowClass";
 }
 
+
+int DocumentWindow::Create(WPARAM wParam, LPARAM lParam)
+{
+
+	return 0;
+}
+
+int DocumentWindow::Size(WPARAM wParam, LPARAM lParam)
+{
+	WORD width = LOWORD(lParam);
+	WORD height = HIWORD(lParam);
+
+	return 0;
+}

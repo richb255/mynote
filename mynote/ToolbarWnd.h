@@ -8,5 +8,6 @@ public:
 private:
 	HWND hToolbarWnd;
 	HWND hParentWnd;
+	void MoveBar(int x, int y, int w, int h);
 };
 

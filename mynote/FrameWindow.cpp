@@ -65,6 +65,9 @@ LRESULT FrameWindow::FrameWndProc(HWND hWndFrame, UINT uMsg, WPARAM wParam, LPAR
         PostQuitMessage(0);
         return 0;
 
+	case WM_SIZE:
+		return frame->Size(wParam, lParam);
+
     default:
        if(frame)
            return DefFrameProc(hWndFrame, frame->hClientWnd, uMsg, wParam, lParam);
@@ -117,5 +120,8 @@ int FrameWindow::Size(WPARAM wParam, LPARAM lParam)
 	WORD width = LOWORD(lParam);
 	WORD height = HIWORD(lParam);
 
+	statusBar->MoveBar(0, height-20, width, 20);
+
 	return 0;
 }
+

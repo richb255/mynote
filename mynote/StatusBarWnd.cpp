@@ -33,3 +33,7 @@ void StatusBarWnd::SetText(LPWSTR lpText, unsigned int nPart, unsigned int nOpti
 	UpdateWindow(hStatusWnd);
 }
 
+void StatusBarWnd::MoveBar(int x, int y, int w, int h)
+{
+	MoveWindow(hStatusWnd, x, y, w, h, TRUE);
+}

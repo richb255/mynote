@@ -10,5 +10,8 @@ public:
 private:
 	HWND hChildWnd;
 	HWND hRichEditWnd;
+	HMODULE hrichEdit;
+	int Create(WPARAM wParam, LPARAM lParam);
+	int Size(WPARAM wParam, LPARAM lParam);
 };
 

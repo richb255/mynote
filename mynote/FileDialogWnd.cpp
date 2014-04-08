@@ -36,3 +36,19 @@ bool FileDialogWnd::GetOpenFileName(HWND hParent)
 
 	return (::GetOpenFileName(&ofn)==TRUE);
 }
+
+const LPWSTR FileDialogWnd::GetFileName()
+{
+	return (const LPWSTR)ofn.lpstrFile;
+}
+
+void FileDialogWnd::SetFlags(DWORD dwNew)
+{
+	ofn.Flags = dwNew;
+}
+
+DWORD FileDialogWnd::GetFlags()
+{
+	return ofn.Flags;
+}
+
