@@ -28,3 +28,7 @@ void RichEditWnd::MoveControl(int x, int y, int w, int h)
 	MoveWindow(hRichEdit, x, y, w, h, TRUE);
 }
 
+void RichEditWnd::SetFileName(LPWSTR newName)
+{
+	fileName = newName;
+}

@@ -1,11 +1,9 @@
 #pragma once
 
-using namespace std;
-
 #include <string> 
 
 class UniString :
-	public wstring
+	public std::wstring
 {
 public:
 	UniString(void);
