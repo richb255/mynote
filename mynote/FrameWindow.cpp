@@ -4,7 +4,7 @@
 #include "AboutDialog.h"
 #include "Resource.h"
 
-
+// Construct a frame window object
 FrameWindow::FrameWindow(HWND hWnd)
 {
 	hFrameWnd = hWnd;
@@ -12,7 +12,7 @@ FrameWindow::FrameWindow(HWND hWnd)
 
 }
 
-
+// destroy the frame window object
 FrameWindow::~FrameWindow(void)
 {
 	delete statusBar;
@@ -58,8 +58,8 @@ LRESULT FrameWindow::FrameWndProc(HWND hWndFrame, UINT uMsg, WPARAM wParam, LPAR
     case WM_CREATE:
         return frame->Create(wParam, lParam);
 
-    case WM_DESTROY:
-        RemoveProp(hWndFrame,  L"FrameWindowPointer");
+    case WM_NCDESTROY:
+        RemoveProp(hWndFrame,  L"FrameWindowPointer");  // remove the C++ object pointer from the property list
         if(frame)
             delete frame;
         PostQuitMessage(0);
@@ -104,23 +104,29 @@ int FrameWindow::Create(WPARAM wParam, LPARAM lParam)
    statusBar = new StatusBarWnd(hFrameWnd);
    statusBar->Create();
 
+   ShowWindow(hClientWnd, SW_SHOW);
+
     return 0;
 }
 
 void FrameWindow::NewDocument(WPARAM wParam, LPARAM lParam)
 {
-   HWND hChildWnd = CreateWindowEx(WS_EX_MDICHILD, DocumentWindow::GetWindowClassName(), NULL, MDIS_ALLCHILDSTYLES | WS_VISIBLE | WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL,
+   HWND hChildWnd;
+   
+   hChildWnd = CreateWindowEx(WS_EX_MDICHILD, DocumentWindow::GetWindowClassName(), NULL, MDIS_ALLCHILDSTYLES | WS_VISIBLE | WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, hClientWnd, NULL, (HINSTANCE)GetModuleHandle(NULL), NULL);
 
-   ShowWindow(hClientWnd, SW_SHOW);
+   ShowWindow(hChildWnd, SW_SHOW);
 }
-
+// Adjust the size of the frame window and all its children.
 int FrameWindow::Size(WPARAM wParam, LPARAM lParam)
 {
 	WORD width = LOWORD(lParam);
 	WORD height = HIWORD(lParam);
 
 	statusBar->MoveBar(0, height-20, width, 20);
+
+	MoveWindow(hClientWnd, 0, 0, width, height-20, true);
 
 	return 0;
 }

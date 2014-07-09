@@ -32,14 +32,14 @@ LRESULT DocumentWindow::WndProc(HWND hWndChild, UINT uMsg, WPARAM wParam, LPARAM
         if(NULL == doc)
         {
             doc = new DocumentWindow(hWndChild);
-            SetProp(hWndChild, L"DocumentPointer", doc);
+            SetProp(hWndChild, L"DocumentPointer", doc);  // store the C++ object pointer in the window's property list
         }
         return TRUE;
 
-	case WM_DESTROY:
-		RemoveProp(hWndChild, L"DocumentPointer");
+	case WM_NCDESTROY:
+		RemoveProp(hWndChild, L"DocumentPointer"); // remove the C++ object pointer from the property list
 		if(doc)
-			delete doc;
+			delete doc; // delete the C++ object pointer
 		return 0;
 
 	case WM_SIZE:
